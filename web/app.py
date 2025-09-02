@@ -31,7 +31,11 @@ def add_router():
     password = request.form.get("password")
 
     if ip and username and password:
-        x = mycol.insert_one({"ip": ip, "username": username, "password": password})
+        x = mycol.insert_one({
+            "ip": ip,
+            "username": username,
+            "password": password
+        })
         print(x)
     return redirect("/")
 
