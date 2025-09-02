@@ -10,10 +10,7 @@ def produce(host, body):
     credentials = pika.PlainCredentials(rabbitmq_user, rabbitmq_pass)
 
     connection = pika.BlockingConnection(
-        pika.ConnectionParameters(
-            host=rabbitmq_host,
-            credentials=credentials
-        )
+        pika.ConnectionParameters(host=rabbitmq_host, credentials=credentials)
     )
 
     channel = connection.channel()

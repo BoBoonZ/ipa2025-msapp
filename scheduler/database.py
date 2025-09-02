@@ -17,5 +17,5 @@ def get_router_info():
     #     print(data)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     get_router_info()

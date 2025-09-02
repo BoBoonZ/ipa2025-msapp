@@ -31,11 +31,7 @@ def add_router():
     password = request.form.get("password")
 
     if ip and username and password:
-        x = mycol.insert_one({
-            "ip": ip,
-            "username": username,
-            "password": password
-        })
+        x = mycol.insert_one({"ip": ip, "username": username, "password": password})
         print(x)
     return redirect("/")
 
@@ -44,7 +40,7 @@ def add_router():
 def delete_comment(idx):
     try:
         if idx:
-            myquery = {'_id': ObjectId(idx)}
+            myquery = {"_id": ObjectId(idx)}
             x = mycol.delete_one(myquery)
             print(x.deleted_count, " documents deleted.")
     except Exception:
