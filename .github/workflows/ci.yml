@@ -44,6 +44,6 @@ jobs:
         docker build -t boriboon/scheduler:latest ./scheduler
         docker build -t boriboon/web:latest ./web
 
-        docker push boriboon/workder:latest
+        docker push boriboon/worker:latest
         docker push boriboon/scheduler:latest
         docker push boriboon/web:latest
