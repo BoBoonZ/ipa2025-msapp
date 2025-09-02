@@ -27,12 +27,11 @@ def main():
 @sample.route("/add", methods=["POST"])
 def add_router():
     ip = request.form.get("ip")
-    username = request.form.get("username")
-    password = request.form.get("password")
+    user = request.form.get("username")
+    pwd = request.form.get("password")
 
-    if ip and username and password:
-        x = mycol.insert_one({"ip": ip, "username": username, 
-                                "password": password})
+    if ip and user and pwd:
+        x = mycol.insert_one({"ip": ip, "username": user, "password": pwd})
         print(x)
     return redirect("/")
 
