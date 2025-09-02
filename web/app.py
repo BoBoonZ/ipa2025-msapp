@@ -18,9 +18,11 @@ mydb = client[db_name]
 mycol = mydb["routers"]
 mystatus = mydb["interface_status"]
 
+
 @sample.route("/")
 def main():
     return render_template("index.html", data=mycol.find())
+
 
 @sample.route("/add", methods=["POST"])
 def add_router():
@@ -29,9 +31,14 @@ def add_router():
     password = request.form.get("password")
 
     if ip and username and password:
-        x = mycol.insert_one({"ip": ip, "username": username, "password": password})
+        x = mycol.insert_one({
+            "ip": ip,
+            "username": username,
+            "password": password
+        })
         print(x)
     return redirect("/")
+
 
 @sample.route("/delete/<idx>", methods=["POST"])
 def delete_comment(idx):
@@ -44,10 +51,12 @@ def delete_comment(idx):
         pass
     return redirect(url_for("main"))
 
+
 @sample.route("/router/<id>", methods=["GET"])
 def get_router(id):
     result = mystatus.find({"router_ip": id})
     return render_template("router.html", id=id, data=result)
+
 
 if __name__ == "__main__":
     sample.run(host="0.0.0.0", port=8080)
