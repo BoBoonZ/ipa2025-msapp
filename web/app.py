@@ -16,6 +16,7 @@ db_name = os.environ.get("DB_NAME")
 client = MongoClient(mongo_uri)
 mydb = client[db_name]
 mycol = mydb["routers"]
+mystatus = mydb["interface_status"]
 
 @sample.route("/")
 def main():
@@ -42,6 +43,11 @@ def delete_comment(idx):
     except Exception:
         pass
     return redirect(url_for("main"))
+
+@sample.route("/router/<id>", methods=["GET"])
+def get_router(id):
+    result = mystatus.find({"router_ip": id})
+    return render_template("router.html", id=id, data=result)
 
 if __name__ == "__main__":
     sample.run(host="0.0.0.0", port=8080)

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background: lightsteelblue;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        td {
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Router: {{ id }}</h1>
+    <table>
+        <tr>
+        <th>Timestamp</th>
+        <th>Interface</th>
+        <th>IP Address</th>
+        <th>Status</th>
+        <th>Protocol</th>
+        </tr>
+        <tbody>
+            {% for i in data%}
+            {% for j in i.interfaces %}
+            <tr>
+                <td>{{ i.timestamp }}</td>
+                <td>{{ j.interface }}</td>
+                <td>{{ j.ip_address }}</td>
+                <td>{{ j.status }}</td>
+                <td>{{ j.proto }}</td>
+            </tr>
+            {% endfor %}
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>

@@ -16,7 +16,7 @@
     <h2>Router List</h2>
     {% for comment in data %}
       <li>
-	       {{ comment.ip }} - {{ comment.username }}	 
+	       <a href="router/{{ comment.ip }}">{{ comment.ip }}</a> - {{ comment.username }}	 
          <form method="POST" action="{{ url_for('delete_comment', idx=comment._id) }}" style="display:inline">
             <button type="submit">Delete</button>
         </form>
