@@ -21,10 +21,10 @@ def produce(host, body):
     channel.exchange_declare(exchange="jobs", exchange_type="direct")
     channel.queue_declare(queue="router_jobs")
     channel.queue_bind(queue="router_jobs",
-    exchange="jobs", routing_key="check_interfaces")
+exchange="jobs", routing_key="check_interfaces")
 
     channel.basic_publish(exchange="jobs",
-    routing_key="check_interfaces", body=body)
+routing_key="check_interfaces", body=body)
 
     connection.close()
 
